@@ -85,7 +85,7 @@ plt.figure(3)
 plt.plot(y[1:8],E1[1:8],label="error1")
 plt.plot(y[1:8],E2[1:8],label="error2")
 plt.ylabel("error")
-plt.xlabel("y")
+plt.xlabel("points")
 plt.legend()
 plt.show()
 
