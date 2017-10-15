@@ -14,7 +14,7 @@ def mark(ymin,ymax,N,pa=1e5,pb=200,f=1e-4,dens=1,l=2.4e6):
     for i in range(0,N+1):
         y[i] = ymin + dy*i
         if y[i] == (ymin + ymax)/2.0:
-            j = i
+            j = i                  #record the middle point of the pressure#
         p[i] = pa + pb*np.cos(y[i]*np.pi/l)
 
     grad[N] = (p[N] - p[N-1])/dy
@@ -27,13 +27,13 @@ def mark(ymin,ymax,N,pa=1e5,pb=200,f=1e-4,dens=1,l=2.4e6):
         exac[i] = pb*np.pi*np.sin(np.pi*y[i]/l)/(dens*f*l)
         e[i] = abs(exac[i] - u[i])
 
-    return e[j],dy
+    return e[j],dy  #output the error on the middle point #
 
 E = np.zeros(5)
 dy = np.zeros(5)
 n = np.zeros(4)
 for i in range(0,5):
-    E[i], dy[i] = mark(0.0,1e6,10*(2**i))
+    E[i], dy[i] = mark(0.0,1e6,10*(2**i)) #collect the different error on the middle point when N equals 10,20,40,80,160#
 
 for i in range(0,4):
     n[i] = (np.log(E[i]) - np.log(E[i+1]))/(np.log(dy[i]) - np.log(dy[i+1]))

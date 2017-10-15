@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-
+##using the numerical methods in question1##
 def mark01(ymin,ymax,N,pa=1e5,pb=200,f=1e-4,dens=1,l=2.4e6):
     p = np.zeros(N + 1)
     u = np.zeros(N + 1)
@@ -27,6 +27,7 @@ def mark01(ymin,ymax,N,pa=1e5,pb=200,f=1e-4,dens=1,l=2.4e6):
 
     return u,exac,e,y/dy
 
+##modify the methods used on begining point and ending point, change another method to calculate the numerical solutions of winds on body parts##
 def mark02(ymin,ymax,N,pa=1e5,pb=200,f=1e-4,dens=1,l=2.4e6):
     p = np.zeros(N + 1)
     u = np.zeros(N + 1)
@@ -60,7 +61,7 @@ print ("the numerically evaluated winds are",U2,
       "the erros are",E2)
 
 
-
+##display the different solutions using one figure##
 plt.figure(1)
 plt.plot(y,U1,label="numerical01")
 plt.plot(y,U2,label='numerical02')
@@ -70,6 +71,7 @@ plt.xlabel("y")
 plt.legend()
 plt.show()
 
+##compare the difference of these two methods##
 plt.figure(2)
 plt.plot(y,E1,label="error1")
 plt.plot(y,E2,label="error2")
@@ -78,7 +80,8 @@ plt.xlabel("y")
 plt.legend()
 plt.show()
 
-plt.figure(3)   ##display the middle part of lines to make difference visible
+##display the middle part of lines to make difference visible##
+plt.figure(3)
 plt.plot(y[1:8],E1[1:8],label="error1")
 plt.plot(y[1:8],E2[1:8],label="error2")
 plt.ylabel("error")
@@ -86,6 +89,7 @@ plt.xlabel("y")
 plt.legend()
 plt.show()
 
+##find the possible value of the order of accuracy when using different N in the scond method##
 def mark03(ymin,ymax,N,pa=1e5,pb=200,f=1e-4,dens=1,l=2.4e6):
     p = np.zeros(N + 1)
     u = np.zeros(N + 1)

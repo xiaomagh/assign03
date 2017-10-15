@@ -18,17 +18,19 @@ def mark(ymin,ymax,N,pa=1e5,pb=200,f=1e-4,dens=1,l=2.4e6):
 
     for i in range(0,N + 1):
         y[i] = ymin + dy * i
-        p[i] = pa + pb * np.cos(y[i] * np.pi / l)
+        p[i] = pa + pb * np.cos(y[i] * np.pi / l) #calculate the pressure on each point#
 
+##Calculate the begining point and ending point##
     grad[N] = (p[N] - p[N - 1]) / dy
     grad[0] = (p[1] - p[0]) / dy
+##Calculate the body part##
     for i in range(1, N):
         grad[i] = (p[i + 1] - p[i - 1]) / (dy * 2)
         
     for i in range(0,N + 1):
-        u[i] = -grad[i] / (dens * f)
-        exac[i] = pb * np.pi * np.sin(np.pi * y[i] / l) / (dens * f * l)
-        e[i] = abs(exac[i] - u[i])
+        u[i] = -grad[i] / (dens * f) #calculate the numerical winds#
+        exac[i] = pb * np.pi * np.sin(np.pi * y[i] / l) / (dens * f * l) #the exact wind#
+        e[i] = abs(exac[i] - u[i]) #error#
 
     return u,exac,e,y/dy
 
