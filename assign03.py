@@ -20,10 +20,10 @@ def mark(ymin,ymax,N,pa=1e5,pb=200,f=1e-4,dens=1,l=2.4e6):
         y[i] = ymin + dy * i
         p[i] = pa + pb * np.cos(y[i] * np.pi / l) #calculate the pressure on each point#
 
-##Calculate the begining point and ending point##
+##Calculate the beginning point and ending point##
     grad[N] = (p[N] - p[N - 1]) / dy
     grad[0] = (p[1] - p[0]) / dy
-##Calculate the body part##
+##Calculate the main part##
     for i in range(1, N):
         grad[i] = (p[i + 1] - p[i - 1]) / (dy * 2)
         

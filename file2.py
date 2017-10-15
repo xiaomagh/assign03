@@ -27,7 +27,7 @@ def mark01(ymin,ymax,N,pa=1e5,pb=200,f=1e-4,dens=1,l=2.4e6):
 
     return u,exac,e,y/dy
 
-##modify the methods used on begining point and ending point, change another method to calculate the numerical solutions of winds on body parts##
+##modify the methods used on beginning point and ending point, change another method to calculate the numerical solutions of winds on main parts##
 def mark02(ymin,ymax,N,pa=1e5,pb=200,f=1e-4,dens=1,l=2.4e6):
     p = np.zeros(N + 1)
     u = np.zeros(N + 1)
